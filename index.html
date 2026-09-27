@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ReguLens helps businesses identify potentially relevant EU and national regulations, understand why they may apply, compare country differences, and turn regulatory complexity into clear next steps." />
+  <title>ReguLens — See the rules that matter to your business</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Inter: clean, professional sans-serif -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            ink: '#0B1220',
+            navy: '#111C33',
+            blue: '#2563EB',
+            cyan: '#06B6D4',
+            mist: '#F5F8FC'
+          },
+          boxShadow: {
+            soft: '0 20px 60px rgba(15, 23, 42, 0.10)',
+            card: '0 12px 40px rgba(15, 23, 42, 0.08)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+      background-size: 42px 42px;
+    }
+    .glass {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(14px);
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff 0%, #b9d8ff 50%, #8be8f4 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .section-label {
+      letter-spacing: .14em;
+    }
+    .image-fallback {
+      background:
+        radial-gradient(circle at 70% 20%, rgba(37,99,235,.22), transparent 30%),
+        radial-gradient(circle at 20% 80%, rgba(6,182,212,.18), transparent 30%),
+        linear-gradient(135deg, #101b33, #182a4d 50%, #0e172a);
+    }
+    .flow-line {
+      position: absolute;
+      top: 50%;
+      left: 8%;
+      right: 8%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
+      z-index: 0;
+    }
+    @media (max-width: 767px) {
+      .flow-line { display: none; }
+    }
+  </style>
+</head>
+
+<body class="bg-white text-slate-900 antialiased">
+
+  <!-- =========================================================
+       NAVIGATION
+       ========================================================= -->
+  <header class="absolute top-0 left-0 right-0 z-50">
+    <nav class="mx-auto max-w-7xl px-5 sm:px-8 py-6 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2 text-white font-extrabold text-xl tracking-tight">
+        <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 border border-white/15">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m20 20-4-4"></path>
+            <path d="M8.5 11h5"></path>
+          </svg>
+        </span>
+        ReguLens
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-white/75">
+        <a href="#how-it-works" class="hover:text-white transition">How it works</a>
+        <a href="#value" class="hover:text-white transition">Why ReguLens</a>
+        <a href="#contact" class="hover:text-white transition">Contact</a>
+      </div>
+
+      <a href="#contact" class="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 hover:bg-slate-100 transition shadow-lg">
+        Join the pilot
+      </a>
+    </nav>
+  </header>
+
+  <!-- =========================================================
+       HERO
+       ========================================================= -->
+  <main id="top">
+    <section class="relative min-h-[760px] overflow-hidden bg-ink">
+      <!-- Provided image page URL is retained as a source reference.
+           Replace HERO_IMAGE_DIRECT_URL with the direct image file URL
+           if Magnific provides one. -->
+      <div
+        class="absolute inset-0 opacity-35"
+        style="background-image: url('HERO_IMAGE_DIRECT_URL'); background-size: cover; background-position: center;">
+      </div>
+
+      <div class="absolute inset-0 bg-[linear-gradient(115deg,#08101f_10%,rgba(8,16,31,.94)_42%,rgba(12,34,62,.78)_100%)]"></div>
+      <div class="absolute inset-0 hero-grid opacity-60"></div>
+
+      <div class="relative mx-auto max-w-7xl px-5 sm:px-8 pt-36 pb-20 lg:pt-44 lg:pb-28">
+        <div class="grid lg:grid-cols-12 gap-14 items-center">
+
+          <div class="lg:col-span-7">
+            <div class="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold text-white/85 mb-7">
+              <span class="h-2 w-2 rounded-full bg-cyan"></span>
+              EU regulatory intelligence for businesses
+            </div>
+
+            <h1 class="max-w-4xl text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-[-0.04em] leading-[1.02] text-white">
+              See the rules that
+              <span class="gradient-text">matter to your business.</span>
+            </h1>
+
+            <p class="mt-7 max-w-2xl text-lg sm:text-xl leading-8 text-white/70">
+              ReguLens helps you identify potentially relevant EU and national regulations,
+              understand why they may apply, compare country differences, and turn regulatory
+              complexity into clear next steps.
+            </p>
+
+            <div class="mt-9 flex flex-col sm:flex-row gap-3">
+              <a href="#contact" class="inline-flex items-center justify-center gap-2 rounded-xl bg-blue px-6 py-3.5 text-sm font-bold text-white hover:bg-blue-500 transition shadow-xl shadow-blue-950/30">
+                Join the pilot
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14"></path>
+                  <path d="m13 6 6 6-6 6"></path>
+                </svg>
+              </a>
+              <a href="#how-it-works" class="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white hover:bg-white/10 transition">
+                See how it works
+              </a>
+            </div>
+
+            <div class="mt-8 flex flex-wrap gap-x-7 gap-y-3 text-sm text-white/50">
+              <span class="flex items-center gap-2">
+                <span class="text-cyan">✓</span> Business-first
+              </span>
+              <span class="flex items-center gap-2">
+                <span class="text-cyan">✓</span> Cross-border view
+              </span>
+              <span class="flex items-center gap-2">
+                <span class="text-cyan">✓</span> Evidence-backed
+              </span>
+            </div>
+          </div>
+
+          <!-- Hero product mockup -->
+          <div class="lg:col-span-5">
+            <div class="relative">
+              <div class="absolute -inset-6 rounded-[2rem] bg-blue/10 blur-3xl"></div>
+
+              <div class="relative rounded-3xl border border-white/15 bg-white/95 shadow-2xl overflow-hidden">
+                <div class="px-5 py-4 border-b border-slate-200 flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="h-2.5 w-2.5 rounded-full bg-slate-300"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-slate-300"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-slate-300"></span>
+                  </div>
+                  <span class="text-[11px] font-semibold text-slate-400">REGULENS / ANALYSIS</span>
+                </div>
+
+                <div class="p-6">
+                  <p class="text-xs font-semibold uppercase tracking-[.16em] text-blue">Business context</p>
+                  <h3 class="mt-2 text-xl font-bold text-slate-900">Launching a connected device in Germany & France</h3>
+
+                  <div class="mt-5 rounded-2xl bg-slate-50 border border-slate-200 p-4">
+                    <div class="flex items-center justify-between">
+                      <span class="text-sm font-semibold text-slate-700">Potentially relevant areas</span>
+                      <span class="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-bold text-blue">6 areas</span>
+                    </div>
+
+                    <div class="mt-4 space-y-3">
+                      <div class="flex items-center gap-3">
+                        <span class="h-8 w-8 rounded-lg bg-blue-100 text-blue flex items-center justify-center font-bold text-xs">01</span>
+                        <div class="flex-1">
+                          <div class="text-sm font-semibold">Product requirements</div>
+                          <div class="text-xs text-slate-400">EU + national considerations</div>
+                        </div>
+                        <span class="text-xs font-semibold text-emerald-600">Review</span>
+                      </div>
+                      <div class="flex items-center gap-3">
+                        <span class="h-8 w-8 rounded-lg bg-cyan-100 text-cyan-700 flex items-center justify-center font-bold text-xs">02</span>
+                        <div class="flex-1">
+                          <div class="text-sm font-semibold">Data & privacy</div>
+                          <div class="text-xs text-slate-400">Depends on data processing</div>
+                        </div>
+                        <span class="text-xs font-semibold text-amber-600">Check</span>
+                      </div>
+                      <div class="flex items-center gap-3">
+                        <span class="h-8 w-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-xs">03</span>
+                        <div class="flex-1">
+                          <div class="text-sm font-semibold">Environmental obligations</div>
+                          <div class="text-xs text-slate-400">Country-specific differences</div>
+                        </div>
+                        <span class="text-xs font-semibold text-slate-500">Compare</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mt-5 flex items-center justify-between text-xs">
+                    <span class="text-slate-400">Next step</span>
+                    <span class="font-bold text-slate-800">Review evidence →</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PROBLEM
+         ========================================================= -->
+    <section id="value" class="bg-mist py-24 sm:py-28">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="max-w-3xl">
+          <p class="section-label text-xs font-bold uppercase text-blue">The problem</p>
+          <h2 class="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-950">
+            Finding legislation is not the same as knowing what applies.
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-slate-600">
+            Businesses can face a huge volume of EU and national rules. The difficult part is
+            connecting those rules to a specific product, activity, market or planned change —
+            especially when requirements differ between countries.
+          </p>
+        </div>
+
+        <div class="mt-14 grid md:grid-cols-3 gap-6">
+          <article class="rounded-2xl bg-white border border-slate-200 p-7 shadow-card">
+            <div class="h-11 w-11 rounded-xl bg-blue-50 text-blue flex items-center justify-center">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path>
+              </svg>
+            </div>
+            <h3 class="mt-5 text-xl font-bold">Too much information</h3>
+            <p class="mt-3 text-slate-600 leading-7">
+              Legal sources can be extensive, technical and difficult to filter to the rules that matter for one business situation.
+            </p>
+          </article>
+
+          <article class="rounded-2xl bg-white border border-slate-200 p-7 shadow-card">
+            <div class="h-11 w-11 rounded-xl bg-cyan-50 text-cyan-700 flex items-center justify-center">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 3v18"></path>
+                <path d="M3 12h18"></path>
+                <path d="M5 5l14 14"></path>
+                <path d="M19 5 5 19"></path>
+              </svg>
+            </div>
+            <h3 class="mt-5 text-xl font-bold">Country differences</h3>
+            <p class="mt-3 text-slate-600 leading-7">
+              A business operating across Europe may need to understand where national requirements add to or differ from EU-level rules.
+            </p>
+          </article>
+
+          <article class="rounded-2xl bg-white border border-slate-200 p-7 shadow-card">
+            <div class="h-11 w-11 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 20V10"></path>
+                <path d="m18 14-6 6-6-6"></path>
+                <path d="M5 4h14"></path>
+              </svg>
+            </div>
+            <h3 class="mt-5 text-xl font-bold">Hard to act on</h3>
+            <p class="mt-3 text-slate-600 leading-7">
+              Knowing that a regulation exists is only the start. Teams need to understand what to investigate, prepare, compare or verify next.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         HOW IT WORKS
+         ========================================================= -->
+    <section id="how-it-works" class="py-24 sm:py-28 bg-white">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="section-label text-xs font-bold uppercase text-blue">How ReguLens works</p>
+          <h2 class="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-950">
+            Start with your business — not a regulation number.
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-slate-600">
+            Describe what you do, where you operate and what is changing. ReguLens organizes the regulatory landscape around that real-world situation.
+          </p>
+        </div>
+
+        <div class="relative mt-16">
+          <div class="flow-line"></div>
+
+          <div class="relative z-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
+              <span class="text-xs font-bold text-blue">01</span>
+              <h3 class="mt-4 font-bold text-lg">Describe</h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">Business, product or service, countries and planned change.</p>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
+              <span class="text-xs font-bold text-blue">02</span>
+              <h3 class="mt-4 font-bold text-lg">Identify</h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">Surface potentially relevant regulatory areas and requirements.</p>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
+              <span class="text-xs font-bold text-blue">03</span>
+              <h3 class="mt-4 font-bold text-lg">Explain</h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">Show why each area may be relevant to your situation.</p>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
+              <span class="text-xs font-bold text-blue">04</span>
+              <h3 class="mt-4 font-bold text-lg">Compare</h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">Highlight important differences between target countries.</p>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
+              <span class="text-xs font-bold text-blue">05</span>
+              <h3 class="mt-4 font-bold text-lg">Act</h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">Turn findings into questions, actions and evidence to verify.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         WHAT THE MVP SHOWS
+         ========================================================= -->
+    <section class="bg-slate-950 py-24 sm:py-28 overflow-hidden">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="grid lg:grid-cols-2 gap-14 items-center">
+          <div>
+            <p class="section-label text-xs font-bold uppercase text-cyan">A focused first MVP</p>
+            <h2 class="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
+              From business question to regulatory map.
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-white/65">
+              The first version focuses on the core hypothesis: people value a personalized view of potentially relevant regulations more than another place to search legal text.
+            </p>
+
+            <div class="mt-9 space-y-5">
+              <div class="flex gap-4">
+                <div class="mt-1 h-6 w-6 shrink-0 rounded-full bg-cyan/15 text-cyan flex items-center justify-center text-xs font-bold">✓</div>
+                <div>
+                  <h3 class="font-bold text-white">Relevant regulatory areas</h3>
+                  <p class="mt-1 text-sm leading-6 text-white/55">Prioritize what may matter based on the business context.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="mt-1 h-6 w-6 shrink-0 rounded-full bg-cyan/15 text-cyan flex items-center justify-center text-xs font-bold">✓</div>
+                <div>
+                  <h3 class="font-bold text-white">Reasoning in plain language</h3>
+                  <p class="mt-1 text-sm leading-6 text-white/55">Explain why a regulatory area may be relevant.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="mt-1 h-6 w-6 shrink-0 rounded-full bg-cyan/15 text-cyan flex items-center justify-center text-xs font-bold">✓</div>
+                <div>
+                  <h3 class="font-bold text-white">Source evidence</h3>
+                  <p class="mt-1 text-sm leading-6 text-white/55">Keep authoritative sources visible so users can verify the result.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-3 shadow-2xl">
+            <div class="rounded-2xl bg-white overflow-hidden">
+              <div class="p-6 border-b border-slate-200">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-xs font-bold uppercase tracking-widest text-blue">Regulatory map</p>
+                    <h3 class="mt-1 text-xl font-bold text-slate-950">Your business situation</h3>
+                  </div>
+                  <span class="rounded-full bg-emerald-50 text-emerald-700 px-3 py-1.5 text-xs font-bold">Analysis ready</span>
+                </div>
+              </div>
+
+              <div class="p-6 space-y-4">
+                <div class="rounded-2xl border border-blue-100 bg-blue-50/60 p-5">
+                  <div class="flex items-start justify-between gap-4">
+                    <div>
+                      <p class="text-sm font-bold text-slate-900">Product compliance</p>
+                      <p class="mt-1 text-xs leading-5 text-slate-500">Potentially relevant to your product category and intended markets.</p>
+                    </div>
+                    <span class="text-xs font-bold text-blue">Why?</span>
+                  </div>
+                </div>
+
+                <div class="rounded-2xl border border-slate-200 p-5">
+                  <div class="flex items-start justify-between gap-4">
+                    <div>
+                      <p class="text-sm font-bold text-slate-900">Country-specific obligations</p>
+                      <p class="mt-1 text-xs leading-5 text-slate-500">Differences identified between Germany and France.</p>
+                    </div>
+                    <span class="text-xs font-bold text-slate-500">Compare</span>
+                  </div>
+                </div>
+
+                <div class="rounded-2xl border border-slate-200 p-5">
+                  <div class="flex items-start justify-between gap-4">
+                    <div>
+                      <p class="text-sm font-bold text-slate-900">Recommended investigation</p>
+                      <p class="mt-1 text-xs leading-5 text-slate-500">Verify the relevant source requirements before launch.</p>
+                    </div>
+                    <span class="text-xs font-bold text-slate-500">Next</span>
+                  </div>
+                </div>
+
+                <div class="pt-2">
+                  <button type="button" class="w-full rounded-xl bg-slate-950 px-5 py-3 text-sm font-bold text-white">
+                    Review supporting sources
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         WHO IT IS FOR
+         ========================================================= -->
+    <section class="py-24 sm:py-28 bg-mist">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="max-w-3xl">
+          <p class="section-label text-xs font-bold uppercase text-blue">Built for real business questions</p>
+          <h2 class="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-950">
+            Useful across different levels of regulatory experience.
+          </h2>
+        </div>
+
+        <div class="mt-14 grid lg:grid-cols-3 gap-6">
+          <article class="rounded-2xl bg-white border border-slate-200 p-7 shadow-card">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue">Founder / SME</span>
+            <h3 class="mt-3 text-2xl font-bold">“Which regulations apply to us?”</h3>
+            <p class="mt-4 text-slate-600 leading-7">
+              For growing businesses without a large internal legal or compliance function, ReguLens helps turn a broad regulatory question into a structured starting point for investigation.
+            </p>
+          </article>
+
+          <article class="rounded-2xl bg-white border border-slate-200 p-7 shadow-card">
+            <span class="text-xs font-bold uppercase tracking-wider text-cyan-700">Cross-border operator</span>
+            <h3 class="mt-3 text-2xl font-bold">“What changes by country?”</h3>
+            <p class="mt-4 text-slate-600 leading-7">
+              For businesses expanding across Europe, ReguLens is designed to make EU-level and national differences easier to see in one business-oriented view.
+            </p>
+          </article>
+
+          <article class="rounded-2xl bg-white border border-slate-200 p-7 shadow-card">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-600">Legal / compliance</span>
+            <h3 class="mt-3 text-2xl font-bold">“What is relevant to this question?”</h3>
+            <p class="mt-4 text-slate-600 leading-7">
+              For experienced professionals, ReguLens aims to reduce the time spent navigating large volumes of information while keeping evidence and sources visible.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         IMAGE / VISUAL STRIP
+         ========================================================= -->
+    <section class="py-10 bg-white">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="grid md:grid-cols-3 gap-5">
+
+          <a
+            href="https://www.magnific.com/de/fotos-kostenlos/anwalt-rechtsberatung-gesetz-compliance-konzept_18042816.htm#fromView=search&page=1&position=2&uuid=b9f45852-ec1a-42fe-a8f8-bbda528555cc&track=ais_hybrid&query=compliance+office"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group relative h-64 overflow-hidden rounded-2xl image-fallback"
+          >
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5">
+              <p class="text-xs font-bold uppercase tracking-wider text-cyan">Source image 01</p>
+              <p class="mt-1 font-semibold text-white">Legal & compliance context</p>
+              <p class="mt-2 text-xs text-white/60 group-hover:text-white transition">Open image source ↗</p>
+            </div>
+          </a>
+
+          <a
+            href="https://www.magnific.com/de/fotos-kostenlos/maenner-verhandeln_5401061.htm#fromView=search&page=1&position=2&uuid=4f4f7381-6e4e-4581-a6e1-d31e7530ccf0&track=ais_hybrid&query=compliance+office+people"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group relative h-64 overflow-hidden rounded-2xl image-fallback"
+          >
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5">
+              <p class="text-xs font-bold uppercase tracking-wider text-cyan">Source image 02</p>
+              <p class="mt-1 font-semibold text-white">Business decision-making</p>
+              <p class="mt-2 text-xs text-white/60 group-hover:text-white transition">Open image source ↗</p>
+            </div>
+          </a>
+
+          <a
+            href="https://www.magnific.com/de/vektoren-kostenlos/zielseite-mit-laptop_5890020.htm#fromView=search&page=1&position=8&uuid=bc05886d-e206-48e3-abcc-19a3c214272f&track=ais_hybrid&query=compliance+website"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group relative h-64 overflow-hidden rounded-2xl image-fallback"
+          >
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5">
+              <p class="text-xs font-bold uppercase tracking-wider text-cyan">Source image 03</p>
+              <p class="mt-1 font-semibold text-white">Digital regulatory workflow</p>
+              <p class="mt-2 text-xs text-white/60 group-hover:text-white transition">Open image source ↗</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         CTA
+         ========================================================= -->
+    <section class="py-24 sm:py-28 bg-white">
+      <div class="mx-auto max-w-4xl px-5 sm:px-8 text-center">
+        <p class="section-label text-xs font-bold uppercase text-blue">The ReguLens hypothesis</p>
+        <h2 class="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-950">
+          Less searching. More clarity about what to investigate.
+        </h2>
+        <p class="mt-6 text-lg leading-8 text-slate-600">
+          We are testing whether businesses prefer a personalized regulatory map built around their situation over manually searching across fragmented legal information.
+        </p>
+        <a href="#contact" class="mt-8 inline-flex items-center justify-center rounded-xl bg-slate-950 px-7 py-3.5 text-sm font-bold text-white hover:bg-slate-800 transition">
+          Tell us what you think
+        </a>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         CONTACT FORM
+         ========================================================= -->
+    <section id="contact" class="bg-slate-950 py-24 sm:py-28">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="grid lg:grid-cols-5 gap-14">
+
+          <div class="lg:col-span-2">
+            <p class="section-label text-xs font-bold uppercase text-cyan">Get involved</p>
+            <h2 class="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
+              Help shape ReguLens.
+            </h2>
+            <p class="mt-6 text-lg leading-8 text-white/60">
+              We are looking for businesses and professionals who regularly deal with EU or national regulatory questions and want to help test a new approach.
+            </p>
+
+            <div class="mt-8 space-y-4">
+              <a href="mailto:taima.brown62@gmail.com" class="flex items-center gap-3 text-white/75 hover:text-white transition">
+                <span class="h-10 w-10 rounded-xl bg-white/10 flex items-center justify-center">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                    <path d="m3 7 9 6 9-6"></path>
+                  </svg>
+                </span>
+                taima.brown62@gmail.com
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-3">
+            <!-- IMPORTANT:
+                 Replace YOUR_ENDPOINT_HERE with the endpoint you will provide.
+                 Example:
+                 action="https://your-domain.com/api/contact"
+            -->
+            <form
+              id="contactForm"
+              action="YOUR_ENDPOINT_HERE"
+              method="POST"
+              class="rounded-3xl bg-white p-6 sm:p-8 shadow-2xl"
+            >
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="firstName" class="block text-sm font-semibold text-slate-800">First name *</label>
+                  <input
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    autocomplete="given-name"
+                    required
+                    class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+                    placeholder="Your first name"
+                  />
+                </div>
+
+                <div>
+                  <label for="lastName" class="block text-sm font-semibold text-slate-800">Last name *</label>
+                  <input
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    autocomplete="family-name"
+                    required
+                    class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+                    placeholder="Your last name"
+                  />
+                </div>
+
+                <div>
+                  <label for="email" class="block text-sm font-semibold text-slate-800">Work email *</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    required
+                    class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+                    placeholder="you@company.com"
+                  />
+                </div>
+
+                <div>
+                  <label for="company" class="block text-sm font-semibold text-slate-800">Company</label>
+                  <input
+                    id="company"
+                    name="company"
+                    type="text"
+                    autocomplete="organization"
+                    class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+                    placeholder="Company name"
+                  />
+                </div>
+
+                <div>
+                  <label for="role" class="block text-sm font-semibold text-slate-800">Your role</label>
+                  <select
+                    id="role"
+                    name="role"
+                    class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+                  >
+                    <option value="">Select one</option>
+                    <option>Founder / Owner</option>
+                    <option>Operations</option>
+                    <option>Legal / Compliance</option>
+                    <option>Product</option>
+                    <option>Finance</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="countries" class="block text-sm font-semibold text-slate-800">Main EU markets</label>
+                  <input
+                    id="countries"
+                    name="countries"
+                    type="text"
+                    class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+                    placeholder="e.g. Germany, France"
+                  />
+                </div>
+
+                <div class="sm:col-span-2">
+                  <label for="message" class="block text-sm font-semibold text-slate-800">What regulatory challenge do you face? *</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    required
+                    class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100 resize-y"
+                    placeholder="Tell us briefly about a regulatory question, market expansion, product launch, or compliance task that is difficult today."
+                  ></textarea>
+                </div>
+
+                <!-- Honeypot field for simple bot protection -->
+                <div class="hidden" aria-hidden="true">
+                  <label for="website">Website</label>
+                  <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+                </div>
+              </div>
+
+              <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-4">
+                <button
+                  id="submitButton"
+                  type="submit"
+                  class="inline-flex items-center justify-center gap-2 rounded-xl bg-blue px-6 py-3.5 text-sm font-bold text-white hover:bg-blue-500 transition disabled:opacity-60"
+                >
+                  Send message
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14"></path>
+                    <path d="m13 6 6 6-6 6"></path>
+                  </svg>
+                </button>
+
+                <p class="text-xs leading-5 text-slate-500">
+                  We’ll use your details only to respond to your enquiry.
+                </p>
+              </div>
+
+              <div id="formMessage" class="hidden mt-5 rounded-xl px-4 py-3 text-sm font-medium"></div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="bg-slate-950 border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8 py-8 flex flex-col sm:flex-row gap-4 items-center justify-between">
+      <div class="flex items-center gap-2 text-white font-bold">
+        <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-white/10">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m20 20-4-4"></path>
+            <path d="M8.5 11h5"></path>
+          </svg>
+        </span>
+        ReguLens
+      </div>
+
+      <p class="text-xs text-white/40">
+        See the rules that matter to your business.
+      </p>
+
+      <a href="mailto:taima.brown62@gmail.com" class="text-xs text-white/50 hover:text-white transition">
+        taima.brown62@gmail.com
+      </a>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       JAVASCRIPT
+       ========================================================= -->
+  <script>
+    /*
+      IMAGE SOURCE NOTES
+      ------------------
+      The URLs supplied for the four images are Magnific webpage URLs,
+      not direct .jpg/.png/.webp image files. Browsers generally cannot
+      use a webpage URL as an <img> or CSS background image.
+
+      The original source links are preserved in the visual strip above.
+      Once you have the direct image file URLs, replace:
+        HERO_IMAGE_DIRECT_URL
+      with the direct hero image URL.
+
+      You can also replace the visual-strip fallback blocks with:
+        style="background-image:url('DIRECT_IMAGE_URL')"
+      if you have direct image files.
+    */
+
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+    const submitButton = document.getElementById('submitButton');
+
+    contactForm.addEventListener('submit', async function (event) {
+      const endpoint = contactForm.getAttribute('action');
+      const honeypot = document.getElementById('website').value;
+
+      // Silently reject simple bots that fill the hidden field.
+      if (honeypot) {
+        event.preventDefault();
+        return;
+      }
+
+      /*
+        The endpoint has not yet been supplied.
+        Until it is supplied, show a clear message rather than
+        pretending that the form was successfully submitted.
+      */
+      if (!endpoint || endpoint === 'YOUR_ENDPOINT_HERE') {
+        event.preventDefault();
+        formMessage.className = 'mt-5 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-sm font-medium text-amber-800';
+        formMessage.textContent = 'The contact form is ready. Please add your submission endpoint to the form action before publishing.';
+        formMessage.classList.remove('hidden');
+        return;
+      }
+
+      // For a real endpoint, submit the form normally.
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending…';
+    });
+  </script>
+
+</body>
+</html>
